@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Endereco implements Serializable {
@@ -25,7 +25,7 @@ public class Endereco implements Serializable {
 	private String cep;
 
 	//endereco nao pode serializar o cliente
-	@JsonBackReference
+	@JsonIgnore
 	//associação muitos para um. muitos enderecos para um cliente
 	@ManyToOne
 	//nome da chave estrangeira

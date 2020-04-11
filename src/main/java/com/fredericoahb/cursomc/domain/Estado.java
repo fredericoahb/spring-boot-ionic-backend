@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Estado implements Serializable {
@@ -22,7 +22,7 @@ public class Estado implements Serializable {
 	private String nome;
 	
 	//Estado nao pode serializar a cidade
-	@JsonBackReference
+	@JsonIgnore
 	//mapeamento reverso. Um para muitos e mapear o ATRIBUTO em cidade many to one
 	@OneToMany(mappedBy = "estado")
 	//Associação um para muitos

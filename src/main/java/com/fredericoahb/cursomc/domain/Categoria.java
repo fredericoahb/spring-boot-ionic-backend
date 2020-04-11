@@ -10,8 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 @Entity
 public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -22,7 +20,7 @@ public class Categoria implements Serializable {
 	private String nome;
 	
 	//resolver o problema da referencia ciclica. Do lado que quero que venha os objetos associados
-	@JsonManagedReference
+
 	//relacionamento muitos para muitos com produtos e referenciando o relacionamento de produto
 	@ManyToMany(mappedBy="categorias")
 	//Associações Uma categoria tem vários produtos
