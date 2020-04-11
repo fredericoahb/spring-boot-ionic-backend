@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -24,10 +26,13 @@ public class Pedido implements Serializable {
 	private Integer id;
 	private Date instante;
 
+	@JsonManagedReference
 	//relacionamento um para um com pagamento
 	@OneToOne(cascade=CascadeType.ALL, mappedBy="pedido")
 	private Pagamento pagamento;
 
+	//é permitido o cliente serializar pedidos
+	@JsonManagedReference
 	//relacionamento com cliente. Um pedido tem um cliente. Relacionamento birecional. Cliente tem que conhecer o pedido
 	@ManyToOne
 	//chave estrangeira

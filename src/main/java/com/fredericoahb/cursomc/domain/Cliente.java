@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fredericoahb.cursomc.domain.enums.TipoCliente;
 
@@ -40,6 +41,8 @@ public class Cliente implements Serializable {
 		@CollectionTable(name="TELEFONE")
 		private Set<String> telefones = new HashSet<>();
 		
+		//nao é permitido pedido serializar cliente
+		@JsonBackReference
 		//Cliente tem que conhecer o pedido. Relacionamento birecional. Como é uma coleção, não precisa de construtor
 		@OneToMany(mappedBy="cliente")
 		private List<Pedido> pedidos = new ArrayList<>();
