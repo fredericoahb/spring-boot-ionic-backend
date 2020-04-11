@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -31,7 +32,7 @@ public class Cliente implements Serializable {
 		
 		//resolvendo o problema da referencia ciclica. Cliente pode serializar seu endereco
 
-		@OneToMany(mappedBy="cliente")
+		@OneToMany(mappedBy="cliente", cascade=CascadeType.ALL)
 		private List<Endereco> enderecos = new ArrayList<>();
 
 		//nao foi criado uma classe telefone por ser muito simples. Foi criado uma set de strings, um conjunto de strings
