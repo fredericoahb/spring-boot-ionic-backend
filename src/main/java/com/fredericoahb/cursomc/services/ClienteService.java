@@ -16,17 +16,19 @@ import org.springframework.transaction.annotation.Transactional;
 import com.fredericoahb.cursomc.domain.Cidade;
 import com.fredericoahb.cursomc.domain.Cliente;
 import com.fredericoahb.cursomc.domain.Endereco;
+import com.fredericoahb.cursomc.domain.enums.Perfil;
 import com.fredericoahb.cursomc.domain.enums.TipoCliente;
 import com.fredericoahb.cursomc.dto.ClienteDTO;
 import com.fredericoahb.cursomc.dto.ClienteNewDTO;
 import com.fredericoahb.cursomc.repositories.ClienteRepository;
 import com.fredericoahb.cursomc.repositories.EnderecoRepository;
+import com.fredericoahb.cursomc.security.UserSS;
+import com.fredericoahb.cursomc.services.exceptions.AuthorizationException;
 import com.fredericoahb.cursomc.services.exceptions.DataIntegrityException;
 
 @Service
 public class ClienteService {
 	
-	//o serviço vai acessar o objeto de acesso a dados
 	@Autowired
 	private ClienteRepository repo;
 	
@@ -36,11 +38,16 @@ public class ClienteService {
 	@Autowired
 	private BCryptPasswordEncoder pe;
 	
-	public Cliente find(Integer id){
+	public Cliente find(Integer id) {
+		
+		UserSS user = UserService.authenticated();
+		if (user==null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())) {
+			throw new AuthorizationException("Acesso negado");
+		}
 		
 		Optional<Cliente> obj = repo.findById(id);
-		return obj.orElseThrow(() -> new ObjectNotFoundException
-				("Objeto não encontrado! Id: ", + id + ", Tipo: " + Cliente.class.getName()));
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
+				"Objeto não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName(), null));
 	}
 	
 	@Transactional
@@ -66,16 +73,16 @@ public class ClienteService {
 			throw new DataIntegrityException("Não é possível excluir porque há pedidos relacionados");
 		}
 	}
-
+	
 	public List<Cliente> findAll() {
 		return repo.findAll();
 	}
-
+	
 	public Page<Cliente> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);
 	}
-
+	
 	public Cliente fromDTO(ClienteDTO objDto) {
 		return new Cliente(objDto.getId(), objDto.getNome(), objDto.getEmail(), null, null, null);
 	}
@@ -94,10 +101,9 @@ public class ClienteService {
 		}
 		return cli;
 	}
-
+	
 	private void updateData(Cliente newObj, Cliente obj) {
 		newObj.setNome(obj.getNome());
 		newObj.setEmail(obj.getEmail());
 	}
-
 }
