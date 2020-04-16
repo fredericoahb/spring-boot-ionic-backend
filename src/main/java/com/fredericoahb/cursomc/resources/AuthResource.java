@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fredericoahb.cursomc.dto.EmailDTO;
 import com.fredericoahb.cursomc.security.JWTUtil;
 import com.fredericoahb.cursomc.security.UserSS;
 import com.fredericoahb.cursomc.services.AuthService;
