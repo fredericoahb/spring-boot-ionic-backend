@@ -1,4 +1,10 @@
 # Loja Virtual
+[![Build Status](https://travis-ci.org/fredericoahb/spring-boot-ionic-backend.svg?branch=master)](https://travis-ci.org/fredericoahb/spring-boot-ionic-backend)
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/fredericoahb/citacoes/blob/master/LICENSE) 
+![GitHub last commit](https://img.shields.io/github/last-commit/fredericoahb/sds)
+![GitHub language count](https://img.shields.io/github/languages/count/fredericoahb/sds)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/fredericoahb/sds)
+![GitHub repo size](https://img.shields.io/github/repo-size/fredericoahb/sds)
 
 * Implementação do Modelo Conceitual
 <img src="Diagrama de Classes Loja Virtual.png"/>
