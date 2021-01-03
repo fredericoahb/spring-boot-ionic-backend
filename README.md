@@ -1,9 +1,9 @@
 # Loja Virtual
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/fredericoahb/citacoes/blob/master/LICENSE) 
-![GitHub last commit](https://img.shields.io/github/last-commit/fredericoahb/sds)
-![GitHub language count](https://img.shields.io/github/languages/count/fredericoahb/sds)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/fredericoahb/sds)
-![GitHub repo size](https://img.shields.io/github/repo-size/fredericoahb/sds)
+![GitHub last commit](https://img.shields.io/github/last-commit/fredericoahb/spring-boot-ionic-backend)
+![GitHub language count](https://img.shields.io/github/languages/count/fredericoahb/spring-boot-ionic-backend)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/fredericoahb/spring-boot-ionic-backend)
+![GitHub repo size](https://img.shields.io/github/repo-size/fredericoahb/spring-boot-ionic-backend)
 
 * Implementação do Modelo Conceitual
 <img src="Diagrama de Classes Loja Virtual.png"/>
